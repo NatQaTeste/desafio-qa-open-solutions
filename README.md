@@ -43,32 +43,32 @@ O projeto foi estruturado seguindo as melhores práticas para manutenção e org
 **2.1 Planejamento de Cobertura**
 
 **a) Priorização:**
-1. Focar no Core Business da empresa: Em sistemas legados, a prioridade máxima é proteger o coração do negócio, garantindo que as funcionalidades fundamentais não parem de funcionar.
-2. Fluxos de receita direta: Priorizaria a automação dos processos que sustentam a operação principal, como Login e Checkout, onde qualquer falha impacta diretamente o faturamento.
-3. Garantia da Jornada: Assegurar que a jornada do usuário seja concluída com sucesso e sem fricções, utilizando os testes de ponta a ponta (E2E) como a ferramenta mais eficaz para mitigar riscos operacionais.
+
+1. Focar no Core Business da empresa, em sistemas legados, a prioridade máxima é proteger o coração do negócio, garantindo que as funcionalidades fundamentais não parem de funcionar.
+2. Priorizar os processos que sustentam a operação principal, onde qualquer falha impacta diretamente o faturamento/objetivo.
+3. Assegurar que a jornada do usuário seja concluída com sucesso e sem fricções, utilizando os testes de ponta a ponta (E2E) como a ferramenta mais eficaz para mitigar riscos operacionais.
 
 **b) Estratégia de Testes:**
-Para proteger esse Core, utilizaria uma abordagem focada em baixo custo e alta velocidade de feedback:
-1. Testes de menor nível: Implementar validações de regras e critérios de forma rápida e barata antes de chegar na interface.
-2. Uso estratégico do Cypress: Utilizar a automação E2E para garantir a integridade da jornada do usuário nos fluxos vitais definidos na priorização.
-3. Equilíbrio de Confiança: Unir a rapidez dos testes de base com a segurança dos testes de ponta a ponta, otimizando o tempo de execução da suite.
+
+Para proteger esse Core, utilizaria uma abordagem focada em baixo custo e alta velocidade de feedback.
+
+1. Implementar validações de regras e critérios de forma rápida e barata executando testes de menor nível antes de chegar na interface.
+2. Utilizar a automação E2E para garantir a integridade da jornada do usuário nos fluxos vitais definidos na priorização.
+3. Unir a rapidez dos testes de base com a segurança dos testes de ponta a ponta, otimizando o tempo de execução da suite.
 
 **c) Medição de Progresso:**
-O sucesso seria medido pela estabilidade do Core Business através de:
-1. Redução do Defect Escape Rate: Monitorar bugs críticos que deixaram de chegar em produção nos fluxos principais.
-2. Confiança nas entregas: Garantir que o tempo gasto com testes manuais repetitivos no "caminho feliz" seja eliminado.
-3. Saúde da Automação: Acompanhar o Pass Rate e a velocidade de feedback que a ferramenta entrega ao time.
+O sucesso seria medido pela estabilidade do Core Business através da redução dos bugs críticos na etapa de produção, diminuição do tempo gasto com testes manuais e acompanhar a velocidadede de feedback que a ferramenta entrega ao time. 
 
 **2.2 Análise de Falha em Pipeline**
 
 **a) Hipóteses para instabilidade:**
-1. Sincronismo e Latência: A aplicação ou a rede podem demorar mais para responder em ambiente de CI do que na máquina local, causando falhas por timeout.
-2. Concorrência de Dados: Testes que utilizam a mesma massa de dados simultaneamente, onde um processo altera o estado necessário para o outro.
-3. Seletores Instáveis: Uso de seletores que dependem de elementos que mudam dinamicamente ou demoram a carregar na tela.
+1. Sincronismo e Latência
+2. Concorrência de Dados
+3. Seletores Instáveis
 
 **b) Diagnóstico e Correção:**
 1. Evidências Visuais: Inspeção imediata dos vídeos e screenshots gerados automaticamente pelo Cypress para entender o estado real da tela no momento do erro.
-2. Depuração de Logs: Análise dos logs de console e requisições de rede (XHR/Fetch) para identificar se a falha foi de serviço (API) ou de interface.
+2. Isolamento: Garantir que um teste não dependa do resultado de outro, permitindo que cada cenário seja independente.
 3. Estabilização: Substituição de esperas fixas por esperas dinâmicas (assertions) e garantia de isolamento entre os cenários de teste.
 
 **2.3 Integrando Qualidade no Processo**
@@ -76,9 +76,9 @@ O sucesso seria medido pela estabilidade do Core Business através de:
 **a) Estrutura no CI/CD (Passo a passo):**
 1. Validação Inicial (Pre-merge): A pipeline é acionada no Pull Request para rodar testes rápidos e garantir que o código básico está íntegro.
 2. Execução de Smoke Tests: Rodar os testes críticos no Cypress (Core Business) para dar um feedback rápido sem travar o desenvolvimento.
-3. Regressão e Evidências: Após o merge, a suite completa roda em ambiente de Staging, gerando evidências automáticas para auditoria.
+3. Regressão e Evidências: Após o merge, a suite completa roda em ambiente de Homologação, gerando evidências automáticas para auditoria.
 
 **b) Critérios de Bloqueio de Deploy:**
-1. Quebra no Core Business: Se o fluxo de Login ou Compra falhar, o deploy é interrompido imediatamente.
-2. Instabilidade na Pipeline: Pausa para manutenção caso a suite apresente falhas constantes sem motivo funcional (testes flaky).
-3. Acordo com o Time (Go/No-Go): Falhas menores são avaliadas com o time de Produto para medir o risco da liberação.
+1. Quebra no Core Business quando um fluxo crítico falhar, o deploy é interrompido imediatamente.
+2. Instabilidade na Pipeline pausa para manutenção caso a suite apresente falhas constantes sem motivo funcional (testes flaky).
+3. Falhas menores são avaliadas com o time de Produto para medir o risco da liberação.
