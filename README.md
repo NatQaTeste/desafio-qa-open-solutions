@@ -68,16 +68,16 @@ O sucesso seria medido pela estabilidade do Core Business através da redução 
 3. Seletores Instáveis
 
 **b) Diagnóstico e Correção:**
-1. Evidências Visuais: Inspeção imediata dos vídeos e screenshots gerados automaticamente pelo Cypress para entender o estado real da tela no momento do erro.
-2. Isolamento: Garantir que um teste não dependa do resultado de outro, permitindo que cada cenário seja independente.
-3. Estabilização: Substituição de esperas fixas por esperas dinâmicas (assertions) e garantia de isolamento entre os cenários de teste.
+1. Inspeção imediata dos vídeos e screenshots gerados automaticamente pelo Cypress para entender o estado real da tela no momento do erro.
+2. Garantir que um teste não dependa do resultado de outro, permitindo que cada cenário seja independente.
+3. Substituição de esperas fixas por esperas dinâmicas (assertions) e garantia de isolamento entre os cenários de teste.
 
 **2.3 Integrando Qualidade no Processo**
 
 **a) Estrutura no CI/CD (Passo a passo):**
-1. Validação Inicial (Pre-merge): A pipeline é acionada no Pull Request para rodar testes rápidos e garantir que o código básico está íntegro.
-2. Execução de Smoke Tests: Rodar os testes críticos no Cypress (Core Business) para dar um feedback rápido sem travar o desenvolvimento.
-3. Regressão e Evidências: Após o merge, a suite completa roda em ambiente de Homologação, gerando evidências automáticas para auditoria.
+1. Validação Inicial (Pre-merge)
+2. Execução de Smoke Tests
+3. Regressão e Evidências
 
 **b) Critérios de Bloqueio de Deploy:**
 1. Quebra no Core Business quando um fluxo crítico falhar, o deploy é interrompido imediatamente.
