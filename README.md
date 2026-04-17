@@ -2,33 +2,34 @@
 
 Este repositório contém a automação de testes para o site SauceDemo, desenvolvida como parte do processo seletivo para Analista de Qualidade.
 
-Este projeto conta com integração contínua (CI) via GitHub Actions. Os testes são executados automaticamente a cada alteração de código.
+Este projeto conta com integração contínua via GitHub Actions. Os testes são executados automaticamente a cada commit
 
 **Tecnologias Utilizadas**
 
 - Framework: Cypress
 - Linguagem: JavaScript
-- Padrão de Arquitetura: Page Object Model (POM)
+- Padrão de Arquitetura: Page Object Model
 - Relatórios: Evidências nativas (Vídeos e Screenshots)
 
 **Arquitetura do Projeto**
 
 O projeto foi estruturado seguindo as melhores práticas para manutenção e organização das pastas:
 
-- cypress/e2e: Contém os arquivos de especificação de testes.
-- cypress/support/pages: Implementação do padrão Page Objects, onde cada página do sistema possui sua respectiva classe e mapeamento de elementos.
-- cypress/videos: Gravações automáticas de cada execução para auditoria e debug.
-- cypress/screenshots: Capturas de tela em pontos críticos e falhas intermitentes.
+- cypress/e2e
+- cypress/support/pages
+- cypress/videos
+- cypress/screenshots
+- .github
 
 **Como Executar o Projeto**
 
 **Pré-requisitos**
-- Node.js instalado (versão 18 ou superior recomendada).
+  Node.js instalado (versão 18 ou superior recomendada).
 
 **Instalação**
-1. Clone o repositório.
-2. No terminal, dentro da pasta do projeto, execute:
-   - `npm install`
+  1. Clone o repositório.
+  2. No terminal, dentro da pasta do projeto, execute:
+    - `npm install`
 
 **Execução dos Testes**
 - Para rodar via terminal (Modo Headless) e gerar evidências:
