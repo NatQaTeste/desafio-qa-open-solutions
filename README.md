@@ -2,6 +2,8 @@
 
 Este repositório contém a automação de testes para o site SauceDemo, desenvolvida como parte do processo seletivo para Analista de Qualidade.
 
+Este projeto conta com integração contínua (CI) via GitHub Actions. Os testes são executados automaticamente a cada alteração de código.
+
 **Tecnologias Utilizadas**
 
 - Framework: Cypress
@@ -14,7 +16,7 @@ Este repositório contém a automação de testes para o site SauceDemo, desenvo
 O projeto foi estruturado seguindo as melhores práticas para manutenção e organização das pastas:
 
 - cypress/e2e: Contém os arquivos de especificação de testes.
-- cypress/support/pages:** Implementação do padrão Page Objects, onde cada página do sistema possui sua respectiva classe e mapeamento de elementos.
+- cypress/support/pages: Implementação do padrão Page Objects, onde cada página do sistema possui sua respectiva classe e mapeamento de elementos.
 - cypress/videos: Gravações automáticas de cada execução para auditoria e debug.
 - cypress/screenshots: Capturas de tela em pontos críticos e falhas intermitentes.
 
